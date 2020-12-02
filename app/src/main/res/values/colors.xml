@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF9E51</color>
+    <color name="colorPrimaryDark">#D5813C</color>
+    <color name="colorAccent">#FF9E51</color>
+    <color name="colorItemname">#F4F4F4</color>
+    <color name="my_spinner_text_color">@android:color/darker_gray</color>
+    <color name="colorGot">#AAAAAA</color>
+    <color name="colorCooked">#00AA00</color>
+    <color name="colorCooking">#FF9E51</color>
+    <color name="colorCancelled">#CC0000</color>
+    <color name="colorBlack">#000000</color>
+</resources>

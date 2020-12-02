@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "639680834085",
+    "firebase_url": "https://pfood-5b1eb.firebaseio.com",
+    "project_id": "pfood-5b1eb",
+    "storage_bucket": "pfood-5b1eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639680834085:android:9b1d7a8343757f99cc2dcc",
+        "android_client_info": {
+          "package_name": "com.destro.pfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "639680834085-fgv2lb90hgbuttq8l25ur5hjs46nnroo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.destro.pfood",
+            "certificate_hash": "85a24fc829bc883b97fb3712ff80dbc1c105e031"
+          }
+        },
+        {
+          "client_id": "639680834085-o1mu3ibip119gkq4ifgp4lvjgnldn1jb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.destro.pfood",
+            "certificate_hash": "f3566a44119bad2ecacdb3c04b2b3a7e26f9f407"
+          }
+        },
+        {
+          "client_id": "639680834085-j9k43etgd3kso5e6dv8lpit693v2s8jr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsfw4TRBQEqU7u_N4aWy0CKzEVKwJlHqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "639680834085-j9k43etgd3kso5e6dv8lpit693v2s8jr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "639680834085-apuhkpsuk34lejhho2pplc4ctkbh6oe4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.fortnoxpocket.pFood"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

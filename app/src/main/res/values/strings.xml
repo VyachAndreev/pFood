@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Да, хочу!</string>
+    <string name="basket">Корзина</string>
+    <string name="profile">Профиль</string>
+    <string name="rating">Рейтинг</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_cart">Корзина</string>
+    <string name="menu">Меню</string>
+    <string name="order">Заказ:</string>
+    <string name="delivery">Доставка</string>
+    <string name="total">Итого</string>
+    <string name="delivery_address">Адрес доставки:</string>
+    <string name="payment">Оплата</string>
+    <string name="use_your_address">Введите ваш адрес</string>
+    <string name="order_snack_please_login_text">Для заказа необходимо авторизоваться</string>
+    <string name="order_snacl_login_action">Войти</string>
+    <string name="alread_logged_in">Вы уже вошли</string>
+    <string name="no_internet">Отсутствует соединение с интернетом</string>
+    <string name="save">Сохранить</string>
+    <string name="login">Зарегистрироваться/Войти</string>
+    <string name="logout">Выйти</string>
+    <string name="default_error">Произошла ошибка</string>
+    <string name="edit_profile_success">Данные успешно сохранены</string>
+    <string name="profile_title">Профиль</string>
+    <string name="fill_personal_data">Заполните профиль</string>
+    <string name="my_orders">Мои заказы</string>
+    <string name="orders">Заказы</string>
+    <string name="order_got">Получен</string>
+    <string name="order_got_by_courier">Получен курьером</string>
+    <string name="order_delivered">Доставлен</string>
+    <string name="order_is_being_cooked">В работе</string>
+    <string name="order_cancelled">Отменен</string>
+    <string name="order_cooked">Выполнен</string>
+
+</resources>
