@@ -17,10 +17,7 @@ import androidx.fragment.app.Fragment;
 import com.destro.pfood.activities.NavigationActivity;
 import com.destro.pfood.classes.AppSettings;
 import com.destro.pfood.classes.AppUser;
-import com.destro.pfood.network_classes.NetworkUsers;
 import com.destro.pfood.R;
-import com.destro.pfood.response_models.PointModel;
-import com.destro.pfood.response_models.ResponseModel;
 import com.destro.pfood.model.UserItem;
 import com.destro.pfood.utils.FirebaseUtils;
 import com.destro.pfood.utils.KeyboardUtils;
@@ -43,11 +40,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
 
-public class ProfileFragment extends Fragment implements NetworkUsers.AddUserCallback, NetworkUsers.GetUserInfoCallback {
+public class ProfileFragment extends Fragment {
 
     private static final String TAG = "ProfileFragment";
 
@@ -87,9 +83,6 @@ public class ProfileFragment extends Fragment implements NetworkUsers.AddUserCal
             profileAddress.setVisibility(View.VISIBLE);
             profileNameEt.setEnabled(true);
             profileNameEt.setVisibility(View.VISIBLE);
-
-            NetworkUsers.onGetUserInfoCallback(this);
-            NetworkUsers.onAddUserCallback(this);
 
             if (!AppSettings.getInstance().users.containsKey(FirebaseAuth.getInstance().getUid())) {
                 Toast.makeText(getContext(), "Чтобы завершить регистрацию, введите Ваши имя и адрес.", Toast.LENGTH_LONG).show();
@@ -163,10 +156,6 @@ public class ProfileFragment extends Fragment implements NetworkUsers.AddUserCal
                         updates.put("address", address);
                         AppUser.getInstance().setUserName(name);
                         AppUser.getInstance().setUserAddress(address);
-                        boolean f = false;
-                        if (!AppSettings.getInstance().users.containsKey(FirebaseAuth.getInstance().getUid())) {
-                            f = true;
-                        }
                         AppSettings.getInstance().users.put(FirebaseAuth.getInstance().getUid(), new UserItem(name, address));
 
                         database
@@ -185,9 +174,6 @@ public class ProfileFragment extends Fragment implements NetworkUsers.AddUserCal
                                         Snackbar.make(view, R.string.edit_profile_success, Snackbar.LENGTH_SHORT).show();
                                     }
                                 });
-                        if (f) {
-                            NetworkUsers.addUser(FirebaseAuth.getInstance().getUid());
-                        }
                         update();
                     } else {
                         Toast.makeText(getContext(), "Имя пользователя и адрес не могут быть пустыми!", Toast.LENGTH_SHORT).show();
@@ -257,21 +243,5 @@ public class ProfileFragment extends Fragment implements NetworkUsers.AddUserCal
                                 phoneLoginConfig))
                         .build(),
                 LOGIN_REQUEST_CODE);
-    }
-
-    @Override
-    public void onResultCode(Integer resultCode) {
-
-    }
-
-
-    @Override
-    public void onResult(PointModel result) {
-
-    }
-
-    @Override
-    public void onResult(ResponseModel result) {
-        Log.i("SUCCESS ADDING USER", result.message);
     }
 }

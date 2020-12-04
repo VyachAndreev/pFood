@@ -33,5 +33,7 @@
     <string name="order_is_being_cooked">В работе</string>
     <string name="order_cancelled">Отменен</string>
     <string name="order_cooked">Выполнен</string>
+    <string name="commentary">Комментарий</string>
+    <string name="leave_a_commentary">Оставьте комментарий</string>
 
 </resources>
