@@ -100,6 +100,7 @@ public class OrderInfoFragment extends Fragment {
         adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, AppSettings.getInstance().clickedOrder.getFoodCart());
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+        Log.i("FoodList", AppSettings.getInstance().clickedOrder.getFoodCart().toString());
 
         if (AppUser.getInstance().getUserLevelAccess() != 2 || st.equals("Отменен") || st.equals("Выполнен") || st.equals("Доставлен")){
             buttonEdit.setVisibility(View.GONE);
@@ -157,18 +158,22 @@ public class OrderInfoFragment extends Fragment {
             public void onClick(View view) {
                 AppSettings.getInstance().clickedOrder.setComment(comment.getText().toString());
                 Order order = AppSettings.getInstance().clickedOrder;
-                String orderName = AppSettings.getInstance().orderKeyList.get(AppSettings.getInstance().orderList.indexOf(AppSettings.getInstance().clickedOrder));
-                DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-                database.child("orders").child(orderName).child("address").setValue(order.getAddress().replace("\n", ""));
-                database.child("orders").child(orderName).child("comment").setValue(order.getComment());
-                database.child("orders").child(orderName).child("foodCart").setValue(order.getFoodCart());
-                database.child("orders").child(orderName).child("name").setValue(order.getName());
-                database.child("orders").child(orderName).child("paymentType").setValue(order.getPaymentType());
-                database.child("orders").child(orderName).child("phone").setValue(order.getPhone());
-                database.child("orders").child(orderName).child("price").setValue(order.getPrice());
-                database.child("orders").child(orderName).child("status").setValue(order.getStatus());
+                if (order.getFoodCart().size() > 0) {
+                    String orderName = AppSettings.getInstance().orderKeyList.get(AppSettings.getInstance().orderList.indexOf(AppSettings.getInstance().clickedOrder));
+                    DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+                    database.child("orders").child(orderName).child("address").setValue(order.getAddress().replace("\n", ""));
+                    database.child("orders").child(orderName).child("comment").setValue(order.getComment());
+                    database.child("orders").child(orderName).child("foodCart").setValue(order.getFoodCart());
+                    database.child("orders").child(orderName).child("name").setValue(order.getName());
+                    database.child("orders").child(orderName).child("paymentType").setValue(order.getPaymentType());
+                    database.child("orders").child(orderName).child("phone").setValue(order.getPhone());
+                    database.child("orders").child(orderName).child("price").setValue(order.getPrice());
+                    database.child("orders").child(orderName).child("status").setValue(order.getStatus());
 
-                Toast.makeText(getContext(), "Заказ был успешно изменен!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Заказ был успешно изменен!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "Заказ пуст!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

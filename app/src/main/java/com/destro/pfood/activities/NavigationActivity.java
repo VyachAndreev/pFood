@@ -208,7 +208,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             }
         };
 
-        AppUser.getInstance().setUserLevelAccess(getAccessLevel());
         createOrderList();
 
         if (!isNetworkAvailable()) {
@@ -269,7 +268,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                         AppSettings.getInstance().chef_ids.add(postSnapshot.getValue(String.class));
                     }
-                    AppUser.getInstance().setUserLevelAccess(getAccessLevel());
                     createOrderList();
                 }
 
@@ -284,7 +282,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                         AppSettings.getInstance().courier_ids.add(postSnapshot.getValue(String.class));
                     }
-                    AppUser.getInstance().setUserLevelAccess(getAccessLevel());
                     createOrderList();
                 }
 
@@ -312,6 +309,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     }
 
     public synchronized void createOrderList() {
+        AppUser.getInstance().setUserLevelAccess(getAccessLevel());
         if (AppUser.getInstance().getUserLevelAccess() > 0) {
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.admin_drawer_menu);

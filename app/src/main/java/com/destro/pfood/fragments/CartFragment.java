@@ -142,7 +142,10 @@ public class CartFragment extends Fragment {
                 else if (AppUser.getInstance().getUserID() != null && AppUser.getInstance().getUserAddress() != null && AppUser.getInstance().getUserName() != null) {
                     if (!foodCollectable.isEmpty()) {
                         Log.i("VIBE CHECK", "1");
-                        if (isNullableItems(foodCollectable) && foodCollectable.size() == 1) {
+                        while(isNullableItems(foodCollectable) > -1){
+                            foodCollectable.remove(isNullableItems(foodCollectable));
+                        }
+                        if (foodCollectable.isEmpty()) {
                             Log.i("VIBE CHECK", "2");
                             Toast toast = Toast.makeText(getContext(), "Ваша корзина не должна быть пуста", Toast.LENGTH_SHORT);
                             toast.show();
@@ -286,16 +289,12 @@ public class CartFragment extends Fragment {
         AppSettings.getInstance().tvNum.setText("");
     }
 
-    public Boolean isNullableItems(ArrayList<FoodCollectable> fc) {
-        Boolean flag = false;
-
-        for (FoodCollectable f : fc) {
-            if (f.getFoodCount() == 0) {
-                flag = true;
-                break;
+    public int isNullableItems(ArrayList<FoodCollectable> fc) {
+        for (int i = 0; i < fc.size(); i++) {
+            if (fc.get(i).getFoodCount() == 0) {
+                return i;
             }
         }
-
-        return flag;
+        return -1;
     }
 }
