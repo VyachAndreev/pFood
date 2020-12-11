@@ -8,9 +8,9 @@ android {
         applicationId "com.destro.pfood"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 21
+        versionCode 23
         resConfigs "ru"
-        versionName "1.2.1"
+        versionName "1.2.3"
     }
     buildTypes {
         release {
