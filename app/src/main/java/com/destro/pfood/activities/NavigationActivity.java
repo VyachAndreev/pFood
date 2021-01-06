@@ -346,13 +346,14 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
 
                     Locale loc = Locale.getDefault();
-                    AppSettings.getInstance().date = new SimpleDateFormat("dd\\MM\\yyyy", loc).format(new Date());
+                    AppSettings.getInstance().date = new SimpleDateFormat("yy\\MM\\dd", loc).format(new Date());
                     for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                         String phone = postSnapshot.child("phone").getValue(String.class);
                         String status = postSnapshot.child("status").getValue(String.class);
                         String courier = null;
                         String currentID = postSnapshot.getKey();
                         int current = Integer.parseInt(currentID.substring(currentID.indexOf("_") + 1));
+                        Log.i("date_real", AppSettings.getInstance().date);
                         Log.i("date", currentID.substring(0, currentID.indexOf("_")));
                         if (AppSettings.getInstance().date.equals(currentID.substring(0, currentID.indexOf("_"))) && current >= AppSettings.getInstance().max){
                             AppSettings.getInstance().max = current + 1;

@@ -58,6 +58,7 @@ public class CartFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.activity_cart, container, false);
 
+
         AppSettings.getInstance().fullPrice = rootView.findViewById(R.id.cfPrice);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_spinner_item, data);
@@ -133,6 +134,9 @@ public class CartFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                final Integer m = AppSettings.getInstance().max;
+                Log.i("max", m.toString());
+
                 TimeZone tz = TimeZone.getTimeZone("GMT+05:30");
                 Integer currentTime = Integer.parseInt(Calendar.getInstance(tz).getTime().toString().substring(11, 16).replace(":", ""));
 
@@ -182,7 +186,12 @@ public class CartFragment extends Fragment {
                                     AppSettings.getInstance().max = 0;
                                     AppSettings.getInstance().date = date;
                                 }
-                                String curTime = new SimpleDateFormat("dd\\MM\\yyyy_" + AppSettings.getInstance().max.toString(), loc).format(new Date());
+                                StringBuilder a = new StringBuilder();
+                                for (int i = AppSettings.getInstance().max; i < 2; i++){
+                                    a.append("0");
+                                }
+                                String curTime = new SimpleDateFormat("yy\\MM\\dd_" + a + m.toString(), loc).format(new Date());
+                                Log.i("max", m.toString());
                                 database.child("orders").child(curTime).child("address").setValue(orderAddress.replace("\n", ""));
                                 database.child("orders").child(curTime).child("comment").setValue(commentary);
                                 database.child("orders").child(curTime).child("foodCart").setValue(food_cart);
